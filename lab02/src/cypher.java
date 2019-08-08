@@ -1,7 +1,3 @@
-
-import java.util.*;
-
-
 public class cypher 
 {
 	public static String caesar(String text, int key)
@@ -12,7 +8,6 @@ public class cypher
 		//text.toLowerCase();
 		char[] ourarray = text.toCharArray();
 		char[] newarray = new char[text.length()];
-		
 		
 		for (char c : ourarray)
 		{
