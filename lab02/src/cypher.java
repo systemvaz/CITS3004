@@ -11,7 +11,7 @@ public class cypher
 		{
 			if(c != ' ')
 			{
-				replace = ((char)((int)c - key));
+				replace = (char)((int)(c - key) % 26);
 				newarray[i] = replace;
 			}
 			i++;
