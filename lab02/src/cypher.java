@@ -1,24 +1,76 @@
 public class cypher 
 {
-	public static String caesar(String text, int key)
+	public static String caesar_decrypt(String text, int key)
 	{
-		int i = 0;
 		char replace;
+		int toint;
 		char[] ourarray = text.toCharArray();
-		char[] newarray = new char[text.length()];
+		String newstring = "";
 		
 		for (char c : ourarray)
 		{
 			if(c != ' ')
 			{
-				replace = ((char)((int)(c - key) % 26));
-				newarray[i] = replace;
+				if (Character.isUpperCase(c) && Character.isLetterOrDigit(c))
+				{
+					toint = (c + key - 65) % 26 + 65;
+					replace = (char)toint;
+					newstring += replace;
+				}
+				else if (Character.isLowerCase(c) && Character.isLetterOrDigit(c))
+				{
+					toint = (c + key - 97) % 26 + 97;
+					replace = (char)toint;
+					newstring += replace;
+				}
+				else if (!Character.isLetterOrDigit(c))
+				{
+					newstring += c;
+				}
 			}
-			i++;
+			else
+			{
+				newstring += " ";
+			}
 		}
+		return newstring;
+	}
+	
+	public static String caesar_encrypt(String text, int key)
+	{
+		char replace;
+		int toint = 0;
 		
-		String result = newarray.toString();
-		return result;
+		char[] ourarray = text.toCharArray();
+		String newstring = "";
+		
+		for (char c : ourarray)
+		{
+			if(c != ' ')
+			{
+				if (Character.isUpperCase(c) && Character.isLetterOrDigit(c))
+				{
+					toint = (c - key - 65) % 26 + 65;
+					replace = (char)toint;
+					newstring += replace;
+				}
+				else if (Character.isLowerCase(c) && Character.isLetterOrDigit(c))
+				{
+					toint = (c - key - 97) % 26 + 97;
+					replace = (char)toint;
+					newstring += replace;
+				}
+				else if (!Character.isLetterOrDigit(c))
+				{
+					newstring += c;
+				}
+			}
+			else
+			{
+				newstring += " ";
+			}
+		}
+		return newstring;
 	}
 	
 	
@@ -28,7 +80,11 @@ public class cypher
 		
 		for(int i = 0; i < 27; i++)
 		{
-			System.out.println(caesar(thetext, i));	
+			System.out.println("Key: " + i);
+			String hacked = caesar_decrypt(thetext, i);
+			String encrypt = caesar_encrypt("Onc", i);
+			System.out.println(hacked);
+			System.out.println(encrypt);
 		}
 	}
 	
