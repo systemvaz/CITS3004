@@ -1,0 +1,10 @@
+CSORA131 =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = csse-oracle3.canterbury.ac.nz)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = csora131.canterbury.ac.nz)
+    )
+  )
+

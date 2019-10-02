@@ -13,13 +13,13 @@ public class cypher
 			{
 				if (Character.isUpperCase(c) && Character.isLetterOrDigit(c))
 				{
-					toint = (c + key - 65) % 26 + 65;
+					toint = (c - key - 65) % 26 + 65;
 					replace = (char)toint;
 					newstring += replace;
 				}
 				else if (Character.isLowerCase(c) && Character.isLetterOrDigit(c))
 				{
-					toint = (c + key - 97) % 26 + 97;
+					toint = (c - key - 97) % 26 + 97;
 					replace = (char)toint;
 					newstring += replace;
 				}
@@ -50,13 +50,13 @@ public class cypher
 			{
 				if (Character.isUpperCase(c) && Character.isLetterOrDigit(c))
 				{
-					toint = (c - key - 65) % 26 + 65;
+					toint = (c + key - 65) % 26 + 65;
 					replace = (char)toint;
 					newstring += replace;
 				}
 				else if (Character.isLowerCase(c) && Character.isLetterOrDigit(c))
 				{
-					toint = (c - key - 97) % 26 + 97;
+					toint = (c + key - 97) % 26 + 97;
 					replace = (char)toint;
 					newstring += replace;
 				}

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Filter
+comment0.text=\r\n\ @author\ JinH\r\n
+comment1.params=
+comment1.target=Filter()
+comment2.params=s
+comment2.target=java.lang.String\ filterMetaChars(java.lang.String)
+numComments=3

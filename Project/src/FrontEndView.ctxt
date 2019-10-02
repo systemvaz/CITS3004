@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=FrontEndView
+comment0.text=\r\n\ Edited\ JinH\r\n
+comment1.params=someFrontEnd
+comment1.target=FrontEndView(FrontEnd)
+comment1.text=\r\n\ FrontEndView\ -\ constructor\r\n
+comment2.params=
+comment2.target=void\ initialize()
+comment2.text=\r\n\ Initialize\ -\ set\ up\ the\ graphical\ display\r\n
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ Starts\ the\ application.\r\n\ @param\ args\ an\ array\ of\ command-line\ arguments\r\n
+comment5.params=e
+comment5.target=void\ windowClosed(java.awt.event.WindowEvent)
+numComments=6

@@ -1,0 +1,31 @@
+
+create or replace
+package AUDIT_HANDLER
+is
+PROCEDURE HANDLE_USER_ACCESS
+( object_schema VARCHAR2
+, object_name VARCHAR2
+, policy_name VARCHAR2
+);
+end;
+/
+
+create or replace
+package body AUDIT_HANDLER
+is
+PROCEDURE HANDLE_USER_ACCESS
+( object_schema VARCHAR2
+, object_name VARCHAR2
+, policy_name VARCHAR2
+) is
+  PRAGMA AUTONOMOUS_TRANSACTION;
+begin
+  insert into pjw169.cosc424audit
+  ( useracct, accessdt, command)
+  values
+  ( user, systimestamp, sys_context('userenv','current_sql'))
+  ;
+  commit;
+end HANDLE_USER_ACCESS;
+end;
+/

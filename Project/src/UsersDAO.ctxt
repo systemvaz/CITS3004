@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=UsersDAO
+comment0.text=\r\n\ @author\ JinH\r\n
+comment1.params=
+comment1.target=void\ connect()
+comment2.params=fe
+comment2.target=void\ executeSQLQuery(FrontEnd)
+comment3.params=fe
+comment3.target=void\ executeSQLQueryPrepared(FrontEnd)
+comment4.params=sqlCommand
+comment4.target=void\ executeSQLNonQuery(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ processResultSet()
+comment6.params=
+comment6.target=void\ disconnect()
+numComments=7

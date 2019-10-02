@@ -1,0 +1,75 @@
+Oracle set-up notes, COSC424, s2 2015
+
+- two accounts created through TAS request, by Adrian White
+	- COSC424 - pw: not2secure
+	- PJW169 - pw: m-2db
+
+- created USERS table with USERNAME, UPASSWORD fields in COSC424 (executing users_tables_instances.sql file)
+- populated with rows from academic staff in COSC department
+
+- granted select, insert, update, delete, references privileges on COSC424.USERS to PJW169
+SQL> grant select, insert, update, delete, references on cosc424.users to pjw169
+
+- created audit table in COSC424
+SQL> 
+create table auditlog
+(
+  useracct     varchar2(50),
+  accessts     timestamp,
+  command      varchar2(512)
+);
+
+- set up trigger for INSERT, UPDATE, DELETE in COSC424 space
+- NOTE: add column for I, U, D, figure out why command not working
+SQL> CREATE OR REPLACE TRIGGER AuditTrigger
+  BEFORE INSERT OR UPDATE OR DELETE ON USERS
+  FOR EACH ROW
+BEGIN
+  INSERT INTO auditlog (useracct, accessts, command)
+      VALUES (USER, SYSTIMESTAMP, SYS_CONTEXT('userenv','current_sql'));
+  EXCEPTION WHEN OTHERS THEN
+    raise_application_error(-20000, 'Error in AuditTrigger: '|| SQLERRM);
+END AuditTrigger;
+
+
+- created audit structure to log any access to COSC424.USERS
+
+-- assume:
+-- CREATE TABLE cosc424audit
+-- (useracct     varchar2(50),		-- which user executed the command
+--  accessts     timestamp,		-- date/time of command
+--  actype	 varchar(10),		-- whether Insert, Update, Delete
+--  command      varchar2(512)		-- what command was executed
+-- );
+
+
+create or replace
+package AUDIT_HANDLER
+is
+PROCEDURE HANDLE_USER_ACCESS
+( object_schema VARCHAR2
+, object_name VARCHAR2
+, policy_name VARCHAR2
+);
+end;
+/
+
+create or replace
+package body AUDIT_HANDLER
+is
+PROCEDURE HANDLE_USER_ACCESS
+( object_schema VARCHAR2
+, object_name VARCHAR2
+, policy_name VARCHAR2
+) is
+  PRAGMA AUTONOMOUS_TRANSACTION;
+begin
+  insert into pjw169.auditlog
+  ( useracct, accessdt, actype, command)
+  values
+  ( user, systimestamp, 'Select', sys_context('userenv','current_sql'))
+  ;
+  commit;
+end HANDLE_USER_ACCESS;
+end;
+/

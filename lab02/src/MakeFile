@@ -1,5 +1,0 @@
-INC=/usr/include/openssl
-LIB=/usr/lib/ssl
-
-all:
-	gcc –I $(INC) –L $(LIB) –o program program.c –lcrypto -ldl

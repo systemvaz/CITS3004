@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=FrontEnd
+comment0.text=\r\n\ @author\ JinH\r\n
+comment1.params=
+comment1.target=FrontEnd()
+comment10.params=useFilter
+comment10.target=void\ setUseFilter(boolean)
+comment11.params=username\ password\ usePrepared\ useFilter
+comment11.target=java.lang.String\ processInput(java.lang.String,\ java.lang.String,\ boolean,\ boolean)
+comment2.params=aBackEnd
+comment2.target=FrontEnd(BackEnd)
+comment3.params=
+comment3.target=java.lang.String\ getUsername()
+comment4.params=
+comment4.target=java.lang.String\ getPassword()
+comment5.params=
+comment5.target=boolean\ getUsePreparedStatement()
+comment6.params=
+comment6.target=boolean\ getUseFilter()
+comment7.params=username
+comment7.target=void\ setUsername(java.lang.String)
+comment8.params=password
+comment8.target=void\ setPassword(java.lang.String)
+comment9.params=usePrepared
+comment9.target=void\ setUsePreparedStatement(boolean)
+numComments=12
