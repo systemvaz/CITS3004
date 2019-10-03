@@ -66,9 +66,11 @@ public class UsersDAO {
         }       
     }
 
-    // --- executeSQLQueryPrepared - execute an SQL query using a Prepared Statement
-    // ---                                 with a pre-compiled query and only the data
-    // ---                                 parameters filled in at run-time
+    
+    /* Execute an SQL query using a Prepared Statement
+     * with a pre-compiled query and only the data parameters filled in at run-time.
+     * @param fe Frontend object containing user supplied username and password.
+     */
     void executeSQLQueryPrepared (FrontEnd fe) 
     {
         // --- 3a) execute SQL query
@@ -77,14 +79,15 @@ public class UsersDAO {
         
         currentLogin = fe.getUsername();
         
+        //SQL statement with ? place-holders...
         sqlQuery = "select * from users where username = ? and upassword = ?";
         
         try 
         {
 			pStmt = conn.prepareStatement(sqlQuery);
-	        pStmt.setString(1, fe.getUsername());
-	        pStmt.setString(2, fe.getPassword());
-	        rset = pStmt.executeQuery();
+	        pStmt.setString(1, fe.getUsername());  //Populate placeholder for username
+	        pStmt.setString(2, fe.getPassword());  //Populate placeholder for upassword
+	        rset = pStmt.executeQuery();  		   //Execute prepared statement
 		} 
         catch (SQLException e1) 
         {
